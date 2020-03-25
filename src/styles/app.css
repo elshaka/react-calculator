@@ -1,0 +1,36 @@
+@import 'reset.css';
+
+.App {
+  max-width: 700px;
+}
+
+.Display {
+  box-sizing: border-box;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: right;
+  padding: 20px;
+  color: #fff;
+  background-color: #858693;
+  border: none;
+  height: 100px;
+  width: 100%;
+}
+
+.ButtonRow {
+  display: flex;
+}
+
+.Button {
+  height: 100px;
+  background-color: #f5913e;
+  flex-basis: 25%;
+}
+
+.ButtonGray {
+  background-color: #e0e0e0;
+}
+
+.ButtonWide {
+  flex-grow: 2;
+}
