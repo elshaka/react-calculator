@@ -22,9 +22,18 @@
 }
 
 .Button {
+  border: 1px solid #858693;
   height: 100px;
   background-color: #f5913e;
   flex-basis: 25%;
+}
+
+.Button:hover {
+  filter: brightness(120%);
+}
+
+.Button:active {
+  filter: brightness(80%);
 }
 
 .ButtonGray {
