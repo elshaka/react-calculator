@@ -1,4 +1,4 @@
-import Big from 'big.js'; // eslint-disable-line import/extensions
+import Big from 'big-js';
 
 const operate = (first, second, operation) => {
   const a = Big(first);
