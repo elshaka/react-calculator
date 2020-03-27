@@ -18,9 +18,9 @@ const calculate = (calculator, buttonName) => {
       }
       break;
     case '+/-':
-      if (operation) {
+      if (operation && next) {
         next = (next * -1).toString();
-      } else {
+      } else if (total) {
         total = (total * -1).toString();
       }
       break;
@@ -30,13 +30,23 @@ const calculate = (calculator, buttonName) => {
       operation = null;
       break;
     case '%':
-      next = (0.01 * total).toString();
+      if (operation && next) {
+        next = (next * 0.01).toString();
+      } else if (total) {
+        total = (total * 0.01).toString();
+      }
       break;
     case '+':
     case '-':
     case '×':
     case '÷':
-      operation = buttonName;
+      if (operation && total && next) {
+        total = operate(total, next, operation);
+        next = null;
+        operation = buttonName;
+      } else if (total) {
+        operation = buttonName;
+      }
       break;
     default:
       if (operation) {
