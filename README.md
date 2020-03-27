@@ -2,16 +2,18 @@
 
 A simple calculator app built using react
 
+![screenshot](./screenshot.png)
+
+## Live Demo
+
+[Live Demo Link](https://react-calculator-elshaka.herokuapp.com)
+
 ## Built With
 
 - React
 - Big.js
 - Webpack
 - PropTypes
-
-## Live Demo
-
-[Live Demo Link](https://react-calculator-elshaka.herokuapp.com)
 
 ## Getting Started
 

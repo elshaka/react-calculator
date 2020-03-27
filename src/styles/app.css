@@ -2,12 +2,13 @@
 
 .App {
   max-width: 700px;
+  margin: 0 auto;
 }
 
 .Display {
   box-sizing: border-box;
-  font-size: 50px;
-  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 60px;
   text-align: right;
   padding: 20px;
   color: #fff;
@@ -15,6 +16,7 @@
   border: none;
   height: 100px;
   width: 100%;
+  overflow: hidden;
 }
 
 .ButtonRow {
@@ -22,9 +24,19 @@
 }
 
 .Button {
+  border: 1px solid #858693;
   height: 100px;
   background-color: #f5913e;
   flex-basis: 25%;
+  font-size: 25px;
+}
+
+.Button:hover {
+  filter: brightness(120%);
+}
+
+.Button:active {
+  filter: brightness(80%);
 }
 
 .ButtonGray {

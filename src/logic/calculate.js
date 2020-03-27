@@ -1,5 +1,11 @@
 import operate from './operate';
 
+const handleDigits = (amount, digit) => {
+  if (amount) { return amount + digit; }
+  if (digit === '.') { return '0.'; }
+  return digit;
+};
+
 const calculate = (calculator, buttonName) => {
   let { total, next, operation } = calculator;
 
@@ -12,28 +18,41 @@ const calculate = (calculator, buttonName) => {
       }
       break;
     case '+/-':
-      total *= (-1);
-      next *= (-1);
+      if (operation && next) {
+        next = (next * -1).toString();
+      } else if (total) {
+        total = (total * -1).toString();
+      }
       break;
-    case 'A/C':
+    case 'AC':
       total = null;
       next = null;
       operation = null;
       break;
     case '%':
-      next = 0.01 * total;
+      if (operation && next) {
+        next = (next * 0.01).toString();
+      } else if (total) {
+        total = (total * 0.01).toString();
+      }
       break;
     case '+':
     case '-':
     case '×':
     case '÷':
-      operation = buttonName;
+      if (operation && total && next) {
+        total = operate(total, next, operation);
+        next = null;
+        operation = buttonName;
+      } else if (total) {
+        operation = buttonName;
+      }
       break;
     default:
       if (operation) {
-        total += buttonName;
+        next = handleDigits(next, buttonName);
       } else {
-        next += buttonName;
+        total = handleDigits(total, buttonName);
       }
   }
 
