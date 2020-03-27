@@ -13,7 +13,7 @@ const calculate = (calculator, buttonName) => {
       break;
     case '+/-':
       total = (total * -1).toString();
-      next *= (next * -1).toString();
+      next = (next * -1).toString();
       break;
     case 'AC':
       total = null;
