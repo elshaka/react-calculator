@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import click from '../actions';
 
 const Button = ({
   name, color, wide, clickHandler,
@@ -25,4 +27,8 @@ Button.defaultProps = {
   wide: false,
 };
 
-export default Button;
+const mapDispatchToProps = dispatch => ({
+  clickHandler: buttonName => dispatch(click(buttonName)),
+});
+
+export default connect(null, mapDispatchToProps)(Button);
