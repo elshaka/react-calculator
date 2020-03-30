@@ -14,7 +14,6 @@ Display.defaultProps = {
 
 const mapStateToProps = state => ({
   result: state.next || state.total || undefined,
-  calculator: state,
 });
 
 export default connect(mapStateToProps)(Display);
