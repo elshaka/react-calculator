@@ -1,3 +1,3 @@
-const click = buttonName => ({ type: buttonName });
+const clickButton = buttonName => ({ type: buttonName });
 
-export default click;
+export default clickButton;
