@@ -11,6 +11,7 @@ A simple calculator app built using react
 ## Built With
 
 - React
+- Redux
 - Big.js
 - Webpack
 - PropTypes
