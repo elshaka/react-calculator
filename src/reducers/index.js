@@ -1,4 +1,4 @@
-import operate from './operate';
+import operate from '../logic/operate';
 
 const handleDigits = (amount, digit) => {
   if (amount) { return amount + digit; }
@@ -6,10 +6,10 @@ const handleDigits = (amount, digit) => {
   return digit;
 };
 
-const calculate = (calculator, buttonName) => {
-  let { total, next, operation } = calculator;
+const reducer = (state = { total: null, next: null, operation: null }, action) => {
+  let { total, next, operation } = state;
 
-  switch (buttonName) {
+  switch (action.type) {
     case '=':
       if (total && next) {
         total = operate(total, next, operation);
@@ -43,20 +43,22 @@ const calculate = (calculator, buttonName) => {
       if (operation && total && next) {
         total = operate(total, next, operation);
         next = null;
-        operation = buttonName;
+        operation = action.type;
       } else if (total) {
-        operation = buttonName;
+        operation = action.type;
       }
       break;
     default:
-      if (operation) {
-        next = handleDigits(next, buttonName);
-      } else {
-        total = handleDigits(total, buttonName);
+      if (action.type.match(/^\d|\.$/)) {
+        if (operation) {
+          next = handleDigits(next, action.type);
+        } else {
+          total = handleDigits(total, action.type);
+        }
       }
   }
 
   return { total, next, operation };
 };
 
-export default calculate;
+export default reducer;

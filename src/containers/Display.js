@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 const Display = ({ result }) => <div className="Display">{result}</div>;
 
@@ -11,4 +12,8 @@ Display.defaultProps = {
   result: '0',
 };
 
-export default Display;
+const mapStateToProps = state => ({
+  result: state.next || state.total || undefined,
+});
+
+export default connect(mapStateToProps)(Display);
